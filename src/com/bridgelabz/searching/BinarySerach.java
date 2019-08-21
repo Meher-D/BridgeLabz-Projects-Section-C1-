@@ -27,6 +27,7 @@ public class BinarySerach {
     System.out.println(n+"^"+p+"="+result);
 	
   }
+	
 	}
 
 
