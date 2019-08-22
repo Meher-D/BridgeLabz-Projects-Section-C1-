@@ -1,5 +1,8 @@
 package com.bridgelabz.utility;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Utility {
 
 	public static void bubbleSort(int arr[]) 
@@ -180,23 +183,32 @@ return array;
 }
 
 /*Frequency Count*/
-public static String[] sort(String array[], int f){
-	String temp="";
-	for(int i=0;i<f;i++){
-	for(int j=i+1;j<f;j++){
-	if(array[i].compareToIgnoreCase(array[j])>0){
-	temp = array[i];
-	array[i]=array[j];
-	array[j]=temp;
+public static void sort(String[] arr)
+{
+	String temp;
+	for( int i=0;i<arr.length-1;i++)
+	{
+		for(int j=i+1;j<arr.length;j++)
+		{
+			if(arr[i].compareToIgnoreCase(arr[j])>0)
+			{
+				temp=arr[i];
+				arr[i]=arr[j];
+				arr[j]=temp;
+			}
+		}
 	}
-	}
-	}
-	return array;
+
+	
 }
 
-public static String[] frequencyCount(String array[],String word)
+
+
+/*public static int frequencyCount(String array[],String word)
 {
 
+	String arr =null;
+	
 	String a[]=arr.split("");
 	int count=0;
 	for(int i=0;i<a.length;i++)
@@ -208,7 +220,66 @@ public static String[] frequencyCount(String array[],String word)
 	}
 	return count;
 	}
+	*/
+
+/*User Registration*/
+
+public static boolean isValid(String email) 
+{ 
+    String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
+                        "[a-zA-Z0-9_+&*-]+)*@" + 
+                        "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+                        "A-Z]{2,7}$"; 
+                          
+    Pattern pat = Pattern.compile(emailRegex); 
+    if (email == null) 
+        return false; 
+    return pat.matcher(email).matches(); 
+} 
+
+public static boolean mobileNumber(String s2)
+{
+	  Pattern p = Pattern.compile("(0/91)?[7-9][0-9]{9}");
+	  Matcher m = p.matcher(s2); 
+      return (m.find() && m.group().equals(s2));
+	}
+
+
+public static String firstName( String s ) 
+{
+ Pattern p = Pattern.compile("[A-Z][a-z]");
+ Matcher m = p.matcher(s); 
+ if (utility.mobileNumber(s2))  
+     System.out.println("Valid Number");         
+ else 
+     System.out.println("Invalid Number");  if (utility.mobileNumber(s2))  
+         System.out.println("Valid Number");         
+     else 
+         System.out.println("Invalid Number");  (m.find() && m.group().equals(s));
+	  //return s.matches( "[A-Z]+([ '-][a-zA-Z]+)*" );
 	
+}
+	 
+ // validate last name
+ public static boolean lastName( String s1)
+ {
+    return s1.matches( "[A-Z]+([ '-][a-zA-Z]+)*" );
+	 
+	 //Pattern p = Pattern.compile("[A-Z]+([ '-][a-zA-Z]+)*");
+	 //Matcher m = p.matcher(s1); 
+	  //return (m.find() && m.group().equals(s1));
+}
+ 
+ public static boolean userId( String uId)
+ {
+    return uId.matches( "[A-Z][a-z]" );
+	 
+	 //Pattern p = Pattern.compile("[A-Z]+([ '-][a-zA-Z]+)*");
+	 //Matcher m = p.matcher(s1); 
+	  //return (m.find() && m.group().equals(s1));
+}
+ 
+	 
 }
 
 
