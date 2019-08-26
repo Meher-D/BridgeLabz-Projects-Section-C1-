@@ -57,6 +57,6 @@ public class RegularExpression {
 		System.out.println("\n\nSuccessfully Modified");
 		s.close();
 	}
-	}
+}
 
 
