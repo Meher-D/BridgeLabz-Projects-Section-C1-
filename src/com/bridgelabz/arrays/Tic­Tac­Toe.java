@@ -1,110 +1,123 @@
 package com.bridgelabz.arrays;
 
+import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Tic­Tac­Toe {
-
-	
-	        static int player = 0;
-			static int[][] BOARD = new int[3][3];
-			static boolean isEmpty = true;
-
-			static void initBoard() {
-				System.out.println("TIC TAC TOE GAME\nComputer is o\nPlayer  is x ");
-				for (int i = 0; i < BOARD.length; i++) {
-					for (int j = 0; j < BOARD[i].length; j++) {
-						BOARD[i][j] = -10;
-					}
-				}
-				System.out.println("Board is this :");
-				dispBoard();
-			}
-
-	
-
-			static void dispBoard() {
-				int count = 0;
-				for (int i = 0; i < BOARD.length; i++) {
-					System.out.println("---------------");
-					System.out.print("||");
-					for (int j = 0; j < BOARD[i].length; j++) {
-						if (BOARD[i][j] == 0) {
-							count++;
-							System.out.print(" o |");
-						} else if (BOARD[i][j] == 1) {
-							count++;
-							System.out.print(" x |");
-						} else
-							System.out.print("   |");
-					}
-					System.out.println("|");
-				}
-				if (count == 9) {
-					isEmpty = false;
-				}
-				System.out.println("---------------");
-			}
-			
-			static void putVal() {
-				int i;
-				int j;
-				if (player % 2 == 1) {
-					i = (int) (Math.random() * 10) % 3;
-					j = (int) (Math.random() * 10) % 3;
-				} else {
-					Scanner s = new Scanner(System.in);
-					System.out.println("enter value of x and y by space");
-					i = s.nextInt();
-					j = s.nextInt();
-				}
-				if (BOARD[i][j] == -10) {
-					if (player % 2 == 0) {
-						BOARD[i][j] = 0;
-					} else {
-						BOARD[i][j] = 1;
-						System.out.println("Coumputer Choosing " + i + " " + j);
-					}
-				} else
-					putVal();
-
-			}
-
-			static boolean win() {
-				return ((BOARD[0][0] + BOARD[0][1] + BOARD[0][2] == player * 3)
-						|| (BOARD[1][0] + BOARD[1][1] + BOARD[1][2] == player * 3)
-						|| (BOARD[2][0] + BOARD[2][1] + BOARD[2][2] == player * 3)
-						|| (BOARD[0][0] + BOARD[1][0] + BOARD[2][0] == player * 3)
-						|| (BOARD[0][1] + BOARD[1][1] + BOARD[2][1] == player * 3)
-						|| (BOARD[0][2] + BOARD[1][2] + BOARD[2][2] == player * 3)
-						|| (BOARD[0][0] + BOARD[1][1] + BOARD[2][2] == player * 3)
-						|| (BOARD[2][0] + BOARD[1][1] + BOARD[0][2] == player * 3));
-			}
-
-			static void play() {
-				initBoard();
-				while (isEmpty) {
-					System.out.println("Players turn");
-					putVal();
-					dispBoard();
-					if (win()) {
-						System.out.println("Player won");
-						return;
-					}
-					player = 1;
-					System.out.println("Computers turn");
-					putVal();
-					dispBoard();
-					if (win()) {
-						System.out.println("Computer won");
-						return;
-					}
-					player = 0;
-				}
-			}
-
-
-public static void main(String[] args) 
+public class Tic­Tac­Toe 
 {
-	play();
+	static Scanner in;
+	static String[] board;
+	static String turn;
+
+	public static void main(String[] args) {
+		in = new Scanner(System.in);
+		board = new String[9];
+		turn = "X";
+		String winner = null;
+		populateEmptyBoard();
+
+		System.out.println("Welcome to 2 Player Tic Tac Toe.");
+		System.out.println("--------------------------------");
+		printBoard();
+		System.out.println("X's will play first. Enter a slot number to place X in:");
+
+		while (winner == null) {
+			int numInput;
+			try {
+				numInput = in.nextInt();
+				if (!(numInput > 0 && numInput <= 9)) {
+					System.out.println("Invalid input; re-enter slot number:");
+					continue;
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid input; re-enter slot number:");
+				continue;
+			}
+			if (board[numInput-1].equals(String.valueOf(numInput))) {
+				board[numInput-1] = turn;
+				if (turn.equals("X")) {
+					turn = "O";
+				} else {
+					turn = "X";
+				}
+				printBoard();
+				winner = checkWinner();
+			} else {
+				System.out.println("Slot already taken; re-enter slot number:");
+				continue;
+			}
+		}
+		if (winner.equalsIgnoreCase("draw")) {
+			System.out.println("It's a draw! Thanks for playing.");
+		} else {
+			System.out.println("Congratulations! " + winner + "'s have won! Thanks for playing.");
+		}
+	}
+
+	static String checkWinner() {
+		for (int a = 0; a < 8; a++) {
+			String line = null;
+			switch (a) {
+			case 0:
+				line = board[0] + board[1] + board[2];
+				break;
+			case 1:
+				line = board[3] + board[4] + board[5];
+				break;
+			case 2:
+				line = board[6] + board[7] + board[8];
+				break;
+			case 3:
+				line = board[0] + board[3] + board[6];
+				break;
+			case 4:
+				line = board[1] + board[4] + board[7];
+				break;
+			case 5:
+				line = board[2] + board[5] + board[8];
+				break;
+			case 6:
+				line = board[0] + board[4] + board[8];
+				break;
+			case 7:
+				line = board[2] + board[4] + board[6];
+				break;
+			}
+			if (line.equals("XXX")) {
+				return "X";
+			} else if (line.equals("OOO")) {
+				return "O";
+			}
+		}
+
+		for (int a = 0; a < 9; a++) {
+			if (Arrays.asList(board).contains(String.valueOf(a+1))) {
+				break;
+			}
+			else if (a == 8) return "draw";
+		}
+
+		System.out.println(turn + "'s turn; enter a slot number to place " + turn + " in:");
+		return null;
+	}
+
+	static void printBoard() {
+		System.out.println("/---|---|---\\");
+		System.out.println("| " + board[0] + " | " + board[1] + " | " + board[2] + " |");
+		System.out.println("|-----------|");
+		System.out.println("| " + board[3] + " | " + board[4] + " | " + board[5] + " |");
+		System.out.println("|-----------|");
+		System.out.println("| " + board[6] + " | " + board[7] + " | " + board[8] + " |");
+		System.out.println("/---|---|---\\");
+	}
+
+	static void populateEmptyBoard() {
+		for (int a = 0; a < 9; a++) {
+			board[a] = String.valueOf(a+1);
+		}
+	}
 }
-}
+	
+
+	
