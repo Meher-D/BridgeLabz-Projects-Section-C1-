@@ -1,5 +1,6 @@
 package com.bridgelabz.utility;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -230,7 +231,22 @@ public static boolean isValid(String phNumber)
     Matcher m = p.matcher(phNumber); 
     return (m.find() && m.group().equals(phNumber)); 
 } 
-	 
+
+public int inputInteger(){
+	try{
+		try{	
+			Object br;
+			return Integer.parseInt(br.readLine());
+		}
+		catch(NumberFormatException nfe){
+			System.out.println(nfe.getMessage());	
+		}
+	}
+	catch(IOException ioe){
+		System.out.println(ioe.getMessage());
+	}
+	return 0;
+}
 }
 
 
