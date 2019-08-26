@@ -223,62 +223,13 @@ public static void sort(String[] arr)
 	*/
 
 /*User Registration*/
-
-public static boolean isValid(String email) 
+public static boolean isValid(String phNumber) 
 { 
-    String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
-                        "[a-zA-Z0-9_+&*-]+)*@" + 
-                        "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
-                        "A-Z]{2,7}$"; 
-                          
-    Pattern pat = Pattern.compile(emailRegex); 
-    if (email == null) 
-        return false; 
-    return pat.matcher(email).matches(); 
+ 
+    Pattern p = Pattern.compile("(0/91)?[7-9][0-9]{9}"); 
+    Matcher m = p.matcher(phNumber); 
+    return (m.find() && m.group().equals(phNumber)); 
 } 
-
-public static boolean mobileNumber(String s2)
-{
-	  Pattern p = Pattern.compile("(0/91)?[7-9][0-9]{9}");
-	  Matcher m = p.matcher(s2); 
-      return (m.find() && m.group().equals(s2));
-	}
-
-
-public static String firstName( String s ) 
-{
- Pattern p = Pattern.compile("[A-Z][a-z]");
- Matcher m = p.matcher(s); 
- if (utility.mobileNumber(s2))  
-     System.out.println("Valid Number");         
- else 
-     System.out.println("Invalid Number");  if (utility.mobileNumber(s2))  
-         System.out.println("Valid Number");         
-     else 
-         System.out.println("Invalid Number");  (m.find() && m.group().equals(s));
-	  //return s.matches( "[A-Z]+([ '-][a-zA-Z]+)*" );
-	
-}
-	 
- // validate last name
- public static boolean lastName( String s1)
- {
-    return s1.matches( "[A-Z]+([ '-][a-zA-Z]+)*" );
-	 
-	 //Pattern p = Pattern.compile("[A-Z]+([ '-][a-zA-Z]+)*");
-	 //Matcher m = p.matcher(s1); 
-	  //return (m.find() && m.group().equals(s1));
-}
- 
- public static boolean userId( String uId)
- {
-    return uId.matches( "[A-Z][a-z]" );
-	 
-	 //Pattern p = Pattern.compile("[A-Z]+([ '-][a-zA-Z]+)*");
-	 //Matcher m = p.matcher(s1); 
-	  //return (m.find() && m.group().equals(s1));
-}
- 
 	 
 }
 
