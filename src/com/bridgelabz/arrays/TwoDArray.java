@@ -1,5 +1,7 @@
 package com.bridgelabz.arrays;
 
+import java.io.PrintWriter;
+
 import com.bridgelabz.utility.Utility;
 
 public class TwoDArray {

@@ -1,6 +1,8 @@
 package com.bridgelabz.utility;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -232,6 +234,7 @@ public static boolean isValid(String phNumber)
     return (m.find() && m.group().equals(phNumber)); 
 } 
 
+
 public int inputInteger(){
 	try{
 		try{	
@@ -247,6 +250,31 @@ public int inputInteger(){
 	}
 	return 0;
 }
+
+public String inputString(){
+	try{
+		return br.readLine();
+	}
+	catch(IOException ioe){
+		System.out.println(ioe.getMessage());
+	}
+	return "";
+}
+
+public double inputDouble(){
+	try{
+		try{	
+			return Double.parseDouble(br.readLine());
+		}
+		catch(NumberFormatException nfe){
+			System.out.println(nfe.getMessage());	
+		}
+	}catch(IOException ioe){
+		System.out.println(ioe.getMessage());
+	}
+	return 0.0;
+}
+
 }
 
 
