@@ -216,7 +216,7 @@ public static boolean isValid(String phNumber)
     return (m.find() && m.group().equals(phNumber)); 
 } 
 
-
+/*2D array integer,double,booleans*/
 
 public int inputInteger() {
 	return scanner.nextInt();
@@ -231,5 +231,9 @@ public String inputString() {
 	// TODO Auto-generated method stub
 	return scanner.nextLine();
 }
+
+
+
+
 
 }
