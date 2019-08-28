@@ -1,13 +1,13 @@
 package com.bridgelabz.utility;
-
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Utility {
 
+	Scanner scanner =new Scanner(System.in);
 	public static void bubbleSort(int arr[]) 
     { 
         int n = arr.length; 
@@ -207,24 +207,6 @@ public static void sort(String[] arr)
 
 
 
-/*public static int frequencyCount(String array[],String word)
-{
-
-	String arr =null;
-	
-	String a[]=arr.split("");
-	int count=0;
-	for(int i=0;i<a.length;i++)
-	{
-		if(word.equals(a[i]))
-		{
-			count++;
-		}
-	}
-	return count;
-	}
-	*/
-
 /*User Registration*/
 public static boolean isValid(String phNumber) 
 { 
@@ -235,50 +217,19 @@ public static boolean isValid(String phNumber)
 } 
 
 
-public int inputInteger(){
-	try{
-		try{	
-			Object br;
-			return Integer.parseInt(br.readLine());
-		}
-		catch(NumberFormatException nfe){
-			System.out.println(nfe.getMessage());	
-		}
-	}
-	catch(IOException ioe){
-		System.out.println(ioe.getMessage());
-	}
-	return 0;
+
+public int inputInteger() {
+	return scanner.nextInt();
 }
 
-public String inputString(){
-	try{
-		return br.readLine();
-	}
-	catch(IOException ioe){
-		System.out.println(ioe.getMessage());
-	}
-	return "";
+public double inputDouble() {
+	// TODO Auto-generated method stub
+	return scanner.nextDouble();
 }
 
-public double inputDouble(){
-	try{
-		try{	
-			return Double.parseDouble(br.readLine());
-		}
-		catch(NumberFormatException nfe){
-			System.out.println(nfe.getMessage());	
-		}
-	}catch(IOException ioe){
-		System.out.println(ioe.getMessage());
-	}
-	return 0.0;
+public String inputString() {
+	// TODO Auto-generated method stub
+	return scanner.nextLine();
 }
 
 }
-
-
-
-	
-
-
