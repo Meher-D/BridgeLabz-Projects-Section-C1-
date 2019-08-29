@@ -344,4 +344,35 @@ public static int findRepeateNoArray(int[] arr)
 	}
 	return 0;
 }
+public void  Gamming(int s,int g,int day)
+{
+	int tempstake = s;
+	int win = 0;
+	int loss = 0;
+	for(int i=0;i<day;i++)
+	{
+	while(tempstake>0 && tempstake<g)
+	{
+		if (Math.random()<0.5)
+		{
+			tempstake++;
+			win++;
+		}
+		else
+		{
+			if(tempstake==g)
+			{
+				win ++;
+			}
+		}
+	}
+	int arr[][] = new int[2][1];
+	arr[0][0] = win;
+	arr[1][0] = loss;
+
+	System.out.println("the number of times the game won is " + arr[0][0]);
+	System.out.println("The number of times the game loss is " + arr[1][0]);
+
+	}
+	}
 }
