@@ -10,7 +10,7 @@ public class AnagramNPalindrome {
  Utility utility=new Utility();
  System.out.println("Anagram Numbers:-");
 		utility.primeAnagrams();
-		System.out.println("Palindrome Numbers");
+		System.out.println("Palindrome Numbers:-");
 		utility.primePallindrome();
 	}
 

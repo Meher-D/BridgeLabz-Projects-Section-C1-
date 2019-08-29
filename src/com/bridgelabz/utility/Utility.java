@@ -295,7 +295,7 @@ public static void primePallindrome()
 {
 	System.out.println();
 	boolean b;
-	System.out.println("Palindrome Numbers:");
+
 	for (int j = 2; j <= 1000; j++) 
 	{
 		b = true;
@@ -330,6 +330,18 @@ public static boolean isPallindrome(int n)
 	
 }
 
-
-
+public static int findRepeateNoArray(int[] arr) 
+{
+	for (int i = 0; i < arr.length; i++) 
+	{
+		for (int j = i + 1; j < arr.length; j++) 
+		{
+			if (arr[i] == arr[j]) 
+			{
+				return arr[i];
+			}
+		}
+	}
+	return 0;
+}
 }
