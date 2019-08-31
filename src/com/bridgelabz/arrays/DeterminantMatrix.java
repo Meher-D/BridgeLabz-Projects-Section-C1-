@@ -54,7 +54,7 @@ public class DeterminantMatrix
 			System.out.println();
 		}
 		int detOfN3 = N1[0][0] * N1[1][1] - N1[1][0] * N1[0][1];
-		System.out.println();
+		System.out.println(); 
 		
 		int detOfM=1*(detOfN1)-2*(detOfN2)+3*(detOfN3);
 		for (int i = 0; i < M.length; i++) {
@@ -66,7 +66,9 @@ public class DeterminantMatrix
 		}
 		System.out.println("Determinant of M is:- "+detOfM);
 
-	}
+	}                                                                                                                                             
+ 
+ 
 
 }
 
