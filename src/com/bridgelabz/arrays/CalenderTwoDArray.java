@@ -18,7 +18,8 @@ for(int i=0;i<calender.length;i++)
 	}
 	}
 }
-static void display(int m) {
+static void display(int m)
+{
 
 	
 		System.out.println("	Sun	Mon	Tue	Wed	Thu	Fri	Sat");
